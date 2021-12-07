@@ -4,6 +4,10 @@ const weatherInfo = document.createElement('img')
 const tempInfo = document.createElement('div')
 
 const locationHeader = document.createElement('div')
+const locationHeaderContainer = document.createElement('div')
+locationHeaderContainer.classList.add('header')
+locationHeader.classList.add('flex')
+
 
 const locationInput = document.createElement('input')
 locationInput.placeholder = 'Location'
@@ -58,7 +62,8 @@ form.addEventListener('submit', (e) => {
 }) 
 
 const content = document.querySelector('#content')
-content.append(locationHeader)
+content.append(locationHeaderContainer)
+locationHeaderContainer.append(locationHeader)
 locationHeader.append(form)
 form.append(locationInput)
 form.append(button)
