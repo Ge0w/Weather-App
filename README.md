@@ -15,7 +15,7 @@ Once you are on the default location will show the weather in London. You can th
 
 ### Live Version:
 
-[Members Only](https://georgewalker.dev/Weather-App)
+[Weather App](https://georgewalker.dev/Weather-App)
 
 ### From the repo:
 
