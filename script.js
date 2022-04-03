@@ -1,5 +1,6 @@
 const apiKey = "dc5ccd32a8df91c843db8202bfff0abe";
 
+//Create and append DOM elements
 const weatherInfo = document.createElement("img");
 const tempInfo = document.createElement("div");
 
@@ -21,10 +22,22 @@ const button = document.createElement("button");
 button.textContent = "Go";
 button.classList.add("btn");
 
+const content = document.querySelector("#content");
+content.append(locationHeaderContainer);
+locationHeaderContainer.append(locationHeader);
+locationHeader.append(form);
+form.append(locationInput);
+form.append(button);
+locationHeader.append(currentLocation);
+content.append(weatherInfo);
+content.append(tempInfo);
+
+//Celcius converter utility function
 const celciusConverter = (kelvin) => {
   return Math.round(kelvin - 273.15);
 };
 
+//Fetch initial open weather map API
 fetch(
   `http://api.openweathermap.org/data/2.5/weather?q=${locationValue}&APPID=${apiKey}`,
   { mode: "cors" }
@@ -37,9 +50,15 @@ fetch(
     tempInfo.textContent = `${celciusConverter(response.main.temp)} °C`;
   });
 
+//Capitalise first character utility function
+function capitaliseFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+//Fetch new town / city from open weather map API
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  locationValue = `${locationInput.value}`;
+  locationValue = `${capitaliseFirstLetter(locationInput.value)}`;
   currentLocation.textContent = locationValue;
   locationInput.value = "";
   fetch(
@@ -57,13 +76,3 @@ form.addEventListener("submit", (e) => {
       alert("Enter Town or City Name");
     });
 });
-
-const content = document.querySelector("#content");
-content.append(locationHeaderContainer);
-locationHeaderContainer.append(locationHeader);
-locationHeader.append(form);
-form.append(locationInput);
-form.append(button);
-locationHeader.append(currentLocation);
-content.append(weatherInfo);
-content.append(tempInfo);
