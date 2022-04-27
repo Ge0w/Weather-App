@@ -59,8 +59,6 @@ function capitaliseFirstLetter(string) {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   locationValue = `${capitaliseFirstLetter(locationInput.value)}`;
-  currentLocation.textContent = locationValue;
-  locationInput.value = "";
   fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${locationValue}&APPID=${apiKey}`,
     { mode: "cors" }
@@ -71,6 +69,8 @@ form.addEventListener("submit", (e) => {
     .then(function (response) {
       weatherInfo.src = `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`;
       tempInfo.textContent = `${celciusConverter(response.main.temp)} °C`;
+      currentLocation.textContent = locationValue;
+      locationInput.value = "";
     })
     .catch(function (err) {
       alert("Enter Town or City Name");
