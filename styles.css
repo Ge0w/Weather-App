@@ -128,3 +128,25 @@ input {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+
+.temp {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .btn {
+    width: auto;
+  }
+
+  .header {
+    height: auto;
+  }
+
+  .header .flex {
+    flex-direction: column;
+  }
+
+  .header form {
+    margin-bottom: 1.5rem;
+  }
+}

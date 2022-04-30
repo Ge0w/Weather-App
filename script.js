@@ -2,7 +2,8 @@ const apiKey = "dc5ccd32a8df91c843db8202bfff0abe";
 
 //Create and append DOM elements
 const weatherInfo = document.createElement("img");
-const tempInfo = document.createElement("div");
+const tempInfo = document.createElement("p");
+tempInfo.classList.add("temp");
 
 const locationHeader = document.createElement("div");
 const locationHeaderContainer = document.createElement("div");
@@ -35,6 +36,11 @@ content.append(tempInfo);
 //Celcius converter utility function
 const celciusConverter = (kelvin) => {
   return Math.round(kelvin - 273.15);
+};
+
+//Fahrenheight converter utility function
+const fahrenheightConverter = (kelvin) => {
+  return Math.round((kelvin - 273.15) * 1.8 + 32);
 };
 
 //Fetch initial open weather map API
@@ -76,3 +82,5 @@ form.addEventListener("submit", (e) => {
       alert("Enter Town or City Name");
     });
 });
+
+console.log(tempInfo.innerHTML);
